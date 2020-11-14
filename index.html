@@ -1,29 +1,62 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Track and Trace</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-        crossorigin="anonymous">
-      <style>
-        body {
-          padding-top:40px;
-        }
-      </style>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Track and Trace</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+				
+		<style>
+			body {
+				padding-top: 40px;
+			}
+			.borderless td, .borderless th {
+				border: none;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="mb-5" >
+				Welcome, <span id="username"></span>!
+				<a href="./login.html">sign out</a>
+			</h1>
+		</div>
 
-    </head>
-    <body>
-      <div class="container">
-        <h1>Welcome, <span id="username"></span>! <a href="./login.html">sign out</a> </h1>
-      </div>
-      <div class="container">
-        <h1></h1>
-      </div>
-        
-        <script src="./js/index.js" async defer></script>
-    </body>
+		<div class="container mb-5">
+			<div class="card">
+				<div class="card-header">
+					<h4 class="mb-4" >Venues</h1>
+						<div class="col-md-6 mb-2">
+								<input id="search-box" class="form-control form-control-sm w-75" type="text" placeholder="Search" aria-label="Search">
+						  </div>
+				</div>
+				<div class="card-body">
+					<table class="table table-hover borderless">
+						<thead class="thead ">
+						  <tr>
+							<th scope="col">Name</th>
+						  </tr>
+						</thead>
+						<tbody id="venuesTableBody">
+						</tbody>
+					  </table>
+				</div>
+	
+			</div>
+		</div>
+		
+
+		<div class="container">
+			<h3 class="mb-4" >Add a new venue:</h1>
+			<div class="input-group">
+				<input type="text" id="venuename" class="form-control mb-3" placeholder="Venue name...">
+			</div>
+      		<input onclick="addVenue()" id="searchbtn" type="button" class="btn btn-primary " value="Add">
+		</div>
+
+		<script src="./js/index.js" async defer></script>
+	</body>
 </html>
