@@ -14,49 +14,104 @@
 			.borderless td, .borderless th {
 				border: none;
 			}
+			.table > tbody > tr > td {
+				vertical-align: middle;
+			}
+			.vertical-center {
+				min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+				min-height: 100vh; /* These two lines are counted as one :-)       */
+
+				display: flex;
+				align-items: center;
+			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<div class="container">
-			<h1 class="mb-5" >
-				Welcome, <span id="username"></span>!
-				<a href="./login.html">sign out</a>
-			</h1>
-		</div>
-
-		<div class="container mb-5">
-			<div class="card">
-				<div class="card-header">
-					<h4 class="mb-4" >Venues</h1>
-						<div class="col-md-6 mb-2">
-								<input id="search-box" class="form-control form-control-sm w-75" type="text" placeholder="Search" aria-label="Search">
-						  </div>
-				</div>
-				<div class="card-body">
-					<table class="table table-hover borderless">
-						<thead class="thead ">
-						  <tr>
-							<th scope="col">Name</th>
-							<th scope="col"></th>
-						  </tr>
-						</thead>
-						<tbody id="venuesTableBody">
-						</tbody>
-					  </table>
+		<div id="main-window">
+			<div class="container">
+				<h1 class="mb-5" >
+					Welcome, <span id="username"></span>!
+					<a href="./login.html">sign out</a>
+				</h1>
+			</div>
+			<div class="container text-center bg-danger text-white mb-5" id="covid-alerts" style="display: none;">
+				<h1>WARNING!</h1>
+				<h3>You may have come into contact with an infected person</h3>
+				<h4> <a class="text-white" href="./alerts.html">CLICK HERE</a> to see your alerts</h4>
+			</div>
+			<div class="container mb-5">
+				<div class="card-deck">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="mb-4" >Venues</h1>
+								<div class="mb-2">
+									<input id="venue-search-box" class="form-control form-control-sm w-25" type="text" placeholder="Search" aria-label="Search">
+								</div>
+						</div>
+						<div class="card-body">
+							<table class="table table-hover borderless">
+								<thead class="thead ">
+								<tr>
+									<th scope="col">Name</th>
+									<th scope="col"></th>
+								</tr>
+								</thead>
+								<tbody id="venuesTableBody">
+								</tbody>
+							</table>
+						</div>
+	
+					</div>
+					<div class="card">
+						<div class="card-header">
+							<h4 class="mb-4" >Checkins</h1>
+								<br>
+								<div class="mb-2">
+										<input id="checkin-search-box" class="form-control form-control-sm w-25" type="text" placeholder="Search" aria-label="Search">
+								</div>
+						</div>
+						<div class="card-body">
+							<table class="table table-hover borderless">
+								<thead class="thead ">
+								<tr>
+									<th scope="col">Venue</th>
+									<th scope="col">Date</th>
+									<th scope="col"></th>
+								</tr>
+								</thead>
+								<tbody id="checkinTableBody">
+								</tbody>
+							</table>
+						</div>
 				</div>
 	
+				
+			</div>
+			</div>
+	
+	
+	
+			
+	
+			<div class="container mb-5">
+				<h3 class="mb-4" >Add a new venue:</h1>
+				<div class="input-group">
+					<input type="text" id="venuename" class="form-control mb-3" placeholder="Venue name...">
+				</div>
+				  <input onclick="addVenue()" id="searchbtn" type="button" class="btn btn-primary " value="Add">
 			</div>
 		</div>
-		
 
-		<div class="container">
-			<h3 class="mb-4" >Add a new venue:</h1>
-			<div class="input-group">
-				<input type="text" id="venuename" class="form-control mb-3" placeholder="Venue name...">
+		<div class="vertical-center" id="successcon" style="display: none;">
+			<div  class="container text-center mt-5">
+				<h1>Thank you for letting us know.</h1>
+				<h3>All the users you came into contact with will be notified shortly.</h3>
+				<h3>Please stay safe.</h3>
 			</div>
-      		<input onclick="addVenue()" id="searchbtn" type="button" class="btn btn-primary " value="Add">
 		</div>
+
+		
 
 		<script src="./js/index.js" async defer></script>
 	</body>
